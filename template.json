@@ -1,0 +1,8 @@
+{
+  "id": "latex",
+  "version": "1.0.0",
+  "name": "LaTeX Development Container",
+  "description": "Dev Container with full TeXLive 2025 and LaTeX Workshop for VS Code",
+  "documentationURL": "https://github.com/khannurien/latex-devcontainer",
+  "licenseURL": "https://spdx.org/licenses/MIT.html"
+}

@@ -1,0 +1,264 @@
+{
+  "name": "LaTeX Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.fontSize": 16,
+        "editor.tabSize": 2,
+        "editor.lineHeight": 1.8,
+        "editor.cursorBlinking": "phase",
+        "editor.unicodeHighlight.nonBasicASCII": false,
+        "editor.wordWrap": "on",
+        "editor.wrappingStrategy": "advanced",
+        "terminal.integrated.defaultProfile.linux": "bash",
+        // LaTeX Workshop settings
+        "latex-workshop.intellisense.package.enabled": true,
+        "latex-workshop.intellisense.unimathsymbols.enabled": true,
+        "latex-workshop.intellisense.citation.backend": "biblatex",
+        "latex-workshop.latex.clean.fileTypes": [
+          // "*.aux",
+          // "*.bbl",
+          // "*.blg",
+          // "*.idx",
+          // "*.ind",
+          // "*.lof",
+          // "*.lot",
+          // "*.out",
+          // "*.toc",
+          // "*.acn",
+          // "*.acr",
+          // "*.alg",
+          // "*.glg",
+          // "*.glo",
+          // "*.gls",
+          // "*.fls",
+          // "*.log",
+          // "*.fdb_latexmk",
+          // "*.snm",
+          // "*.synctex(busy)",
+          // "*.synctex.gz(busy)",
+          // "*.synctex.gz",
+          // "*.nav",
+          // "*.vrb",
+          // "*.bcf",
+          // "*.pyg",
+          // "*.run.xml"
+        ],
+        // FIXME: Incompatible with minted (uses current directory by default)
+        // "latex-workshop.latex.outDir": "build",
+        "latex-workshop.latex.autoBuild.run": "onFileChange",
+        "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+        "latex-workshop.latex.autoBuild.interval": 300000,
+        "latex-workshop.latex.autoClean.run": "onFailed",
+        "latex-workshop.latex.clean.method": "glob",
+        "latex-workshop.latex.clean.subfolder.enabled": true,
+        "latex-workshop.synctex.afterBuild.enabled": true,
+        "latex-workshop.latex.pdfWatch.delay": 500,
+        "latex-workshop.view.autoFocus.enabled": false,
+        "latex-workshop.view.pdf.trim": 0,
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.view.pdf.zoom": "page-width",
+        "latex-workshop.latex.tools": [
+          {
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "command": "pdflatex",
+            "name": "pdflatex"
+          },
+          {
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "command": "xelatex",
+            "name": "xelatex"
+          },
+          {
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "%DOC%"
+            ],
+            "command": "lualatex",
+            "name": "lualatex"
+          },
+          {
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+            ],
+            "command": "latexmk",
+            "name": "latexmk"
+          },
+          {
+            "args": [
+              "-shell-escape",
+              "-synctex=1",
+              "-interaction=nonstopmode",
+              "-file-line-error",
+              "-pdf",
+              "-outdir=%OUTDIR%",
+              "-lualatex",
+              "-e",
+              "$bibtex='biber %O %S';",
+              "%DOC%"
+            ],
+            "command": "latexmk",
+            "name": "latexmk + lualatex + biber"
+          },
+          {
+            "args": [
+              "%DOCFILE%"
+            ],
+            "command": "bibtex",
+            "name": "bibtex"
+          },
+          {
+            "args": [
+              "%DOCFILE%"
+            ],
+            "command": "biber",
+            "name": "biber"
+          }
+        ],
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "latexmk + lualatex + biber",
+            "tools": [
+              "latexmk + lualatex + biber"
+            ]
+          },
+          {
+            "name": "latexmk",
+            "tools": [
+              "latexmk"
+            ]
+          },
+          {
+            "name": "latexmk -> bibtex -> latexmk *2",
+            "tools": [
+              "latexmk",
+              "bibtex",
+              "latexmk",
+              "latexmk"
+            ]
+          },
+          {
+            "name": "latexmk -> biber -> latexmk *2",
+            "tools": [
+              "latexmk",
+              "biber",
+              "latexmk",
+              "latexmk"
+            ]
+          },
+          {
+            "name": "pdflatex",
+            "tools": [
+              "pdflatex"
+            ]
+          },
+          {
+            "name": "pdflatex -> bibtex -> pdflatex *2",
+            "tools": [
+              "pdflatex",
+              "bibtex",
+              "pdflatex",
+              "pdflatex"
+            ]
+          },
+          {
+            "name": "pdflatex -> biber -> pdflatex *2",
+            "tools": [
+              "pdflatex",
+              "biber",
+              "pdflatex",
+              "pdflatex"
+            ]
+          },
+          {
+            "name": "xelatex",
+            "tools": [
+              "xelatex"
+            ]
+          },
+          {
+            "name": "xelatex -> bibtex -> xelatex *2",
+            "tools": [
+              "xelatex",
+              "bibtex",
+              "xelatex",
+              "xelatex"
+            ]
+          },
+          {
+            "name": "xelatex -> biber -> xelatex *2",
+            "tools": [
+              "xelatex",
+              "biber",
+              "xelatex",
+              "xelatex"
+            ]
+          },
+          {
+            "name": "lualatex -> bibtex -> lualatex *2",
+            "tools": [
+              "lualatex",
+              "bibtex",
+              "lualatex",
+              "lualatex"
+            ]
+          },
+          {
+            "name": "lualatex -> biber -> lualatex *2",
+            "tools": [
+              "lualatex",
+              "biber",
+              "lualatex",
+              "lualatex"
+            ]
+          },
+          {
+            "name": "bibtex",
+            "tools": [
+              "bibtex"
+            ]
+          },
+          {
+            "name": "biber",
+            "tools": [
+              "biber"
+            ]
+          }
+        ],
+        "latex-workshop.latex.recipe.default": "latexmk + lualatex + biber"
+      },
+      "extensions": [
+        "james-yu.latex-workshop",
+        "wayou.vscode-todo-highlight"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "features": {}
+}
