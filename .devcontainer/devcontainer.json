@@ -15,6 +15,13 @@
         "editor.unicodeHighlight.nonBasicASCII": false,
         "editor.wordWrap": "on",
         "editor.wrappingStrategy": "advanced",
+        "editor.wordBasedSuggestions": "off",
+        // "editor.quickSuggestions": {
+        //   "other": "on",
+        //   "comments": "off",
+        //   "strings": "off"
+        // },
+        // "editor.acceptSuggestionOnEnter": "off",
         // LaTeX Workshop settings
         "latex-workshop.intellisense.package.enabled": true,
         "latex-workshop.intellisense.unimathsymbols.enabled": true,
@@ -82,9 +89,9 @@
         ],
         "latex-workshop.latex.recipes": [
           {
-            "name": "latexmk + pdflatex + biber",
+            "name": "latexmk + lualatex + biber",
             "tools": [
-              "latexmk + pdflatex + biber"
+              "latexmk + lualatex + biber"
             ]
           },
           {
@@ -94,9 +101,9 @@
             ]
           },
           {
-            "name": "latexmk + lualatex + biber",
+            "name": "latexmk + pdflatex + biber",
             "tools": [
-              "latexmk + lualatex + biber"
+              "latexmk + pdflatex + biber"
             ]
           }
         ],
