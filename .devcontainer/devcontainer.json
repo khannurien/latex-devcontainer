@@ -1,9 +1,10 @@
 {
   "name": "LaTeX Dev Container",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": ".."
-  },
+  "image": "ghcr.io/khannurien/latex-devcontainer:2025.12",
+  // "build": {
+  //   "dockerfile": "Dockerfile",
+  //   "context": ".."
+  // },
   "customizations": {
     "vscode": {
       "settings": {
