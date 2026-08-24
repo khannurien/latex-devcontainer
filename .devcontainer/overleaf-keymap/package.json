@@ -1,0 +1,144 @@
+{
+  "name": "overleaf-keymap",
+  "displayName": "Overleaf Keymap",
+  "description": "Makes VS Code's keyboard shortcuts behave like Overleaf's.",
+  "publisher": "local",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Keymaps"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "contributes": {
+    "keybindings": [
+      {
+        "//": "Overleaf: Ctrl+B -> \\textbf{...}. Only inside LaTeX files, so Ctrl+B still toggles the sidebar everywhere else.",
+        "key": "ctrl+b",
+        "mac": "cmd+b",
+        "command": "latex-workshop.shortcut.textbf",
+        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^bibtex$|^rsweave$/"
+      },
+      {
+        "//": "Overleaf: Ctrl+I -> \\textit{...}",
+        "key": "ctrl+i",
+        "mac": "cmd+i",
+        "command": "latex-workshop.shortcut.textit",
+        "when": "editorTextFocus && !editorReadonly && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^bibtex$|^rsweave$/"
+      },
+      {
+        "//": "Overleaf: Ctrl+Enter -> compile. (Ctrl+S also compiles here, via latex-workshop.latex.autoBuild.run = onFileChange.)",
+        "key": "ctrl+enter",
+        "mac": "cmd+enter",
+        "command": "latex-workshop.build",
+        "when": "editorTextFocus && !virtualWorkspace && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^bibtex$|^rsweave$/"
+      },
+      {
+        "//": "Overleaf: Ctrl+D -> delete current line (VS Code default: add selection to next find match).",
+        "key": "ctrl+d",
+        "mac": "cmd+d",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "//": "Overleaf: Ctrl+Shift+D -> duplicate selection (VS Code default: show Run and Debug).",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d",
+        "command": "editor.action.duplicateSelection",
+        "when": "textInputFocus && !editorReadonly"
+      },
+      {
+        "//": "Overleaf: Ctrl+U -> uppercase the selection (VS Code default: soft undo of cursor motion).",
+        "key": "ctrl+u",
+        "mac": "ctrl+u",
+        "command": "editor.action.transformToUppercase",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "//": "Overleaf: Ctrl+Shift+U -> lowercase the selection (VS Code default: focus the Output panel).",
+        "key": "ctrl+shift+u",
+        "mac": "ctrl+shift+u",
+        "command": "editor.action.transformToLowercase",
+        "when": "editorTextFocus && !editorReadonly"
+      },
+      {
+        "//": "Overleaf: Ctrl+Shift+L -> go to line number (VS Code default: select all occurrences of selection).",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l",
+        "command": "workbench.action.gotoLine",
+        "when": "editorTextFocus"
+      },
+      {
+        "//": "Overleaf: Ctrl+G -> find next (VS Code default: go to line).",
+        "key": "ctrl+g",
+        "mac": "cmd+g",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorFocus"
+      },
+      {
+        "//": "Overleaf: Ctrl+Shift+G -> find previous (VS Code default: show Source Control).",
+        "key": "ctrl+shift+g",
+        "mac": "cmd+shift+g",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorFocus"
+      },
+      {
+        "//": "Overleaf: F2 -> toggle fold (VS Code default: rename symbol, which LaTeX has no use for).",
+        "key": "f2",
+        "mac": "f2",
+        "command": "editor.toggleFold",
+        "when": "editorTextFocus && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^bibtex$|^rsweave$/"
+      },
+      {
+        "//": "Overleaf: Alt+Shift+0 -> unfold all",
+        "key": "alt+shift+0",
+        "mac": "cmd+alt+0",
+        "command": "editor.unfoldAll",
+        "when": "editorTextFocus"
+      },
+      {
+        "//": "Overleaf: Alt+Shift+1 -> fold all",
+        "key": "alt+shift+1",
+        "mac": "cmd+alt+1",
+        "command": "editor.foldAll",
+        "when": "editorTextFocus"
+      },
+      {
+        "//": "Overleaf: Alt+Left/Right -> start/end of line (VS Code default: navigate back/forward, still on Ctrl+Alt+- and Ctrl+Shift+-).",
+        "key": "alt+left",
+        "mac": "ctrl+a",
+        "command": "cursorHome",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+right",
+        "mac": "ctrl+e",
+        "command": "cursorEnd",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+shift+left",
+        "mac": "ctrl+shift+a",
+        "command": "cursorHomeSelect",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "alt+shift+right",
+        "mac": "ctrl+shift+e",
+        "command": "cursorEndSelect",
+        "when": "editorTextFocus"
+      },
+      {
+        "//": "Overleaf: Alt+Space -> open autocomplete (Ctrl+Space is already the VS Code default).",
+        "key": "alt+space",
+        "mac": "alt+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible"
+      }
+    ]
+  }
+}

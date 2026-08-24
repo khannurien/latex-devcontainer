@@ -5,6 +5,10 @@
   //   "dockerfile": "Dockerfile",
   //   "context": ".."
   // },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  // Overleaf keyboard shortcuts ship as a keymap extension
+  "postCreateCommand": "bash .devcontainer/install-keymap.sh",
   "customizations": {
     "vscode": {
       "settings": {
@@ -126,7 +130,5 @@
         "jgclark.vscode-todo-highlight"
       ]
     }
-  },
-  "remoteUser": "vscode",
-  "updateRemoteUserUID": true
+  }
 }
