@@ -7,8 +7,10 @@
   // },
   "remoteUser": "vscode",
   "updateRemoteUserUID": true,
-  // Overleaf keyboard shortcuts ship as a keymap extension
-  "postCreateCommand": "bash .devcontainer/install-keymap.sh",
+  // Local extensions, packaged and installed by the script below:
+  //   .devcontainer/overleaf-keymap  -- Overleaf's keyboard shortcuts
+  //   .devcontainer/paste-figure     -- Ctrl+V an image -> figure environment
+  "postCreateCommand": "bash .devcontainer/install-extensions.sh",
   "customizations": {
     "vscode": {
       "settings": {
@@ -123,7 +125,12 @@
             ]
           }
         ],
-        "latex-workshop.latex.recipe.default": "lastUsed"
+        "latex-workshop.latex.recipe.default": "lastUsed",
+        // Overleaf-style image paste, from .devcontainer/paste-figure. Ctrl+V (or a
+        // drag & drop) of an image into a .tex file writes it here and inserts a
+        // figure environment around it; edit "pasteFigure.template" to change the
+        // block that gets inserted.
+        "pasteFigure.directory": "img"
       },
       "extensions": [
         "james-yu.latex-workshop",

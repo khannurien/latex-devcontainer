@@ -1,0 +1,59 @@
+{
+  "name": "latex-paste-figure",
+  "displayName": "LaTeX Paste Figure",
+  "description": "Overleaf-style Ctrl+V: pasting an image into a .tex file saves it and inserts a figure environment.",
+  "publisher": "local",
+  "version": "1.0.0",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "//": "Must run in the container: the provider writes the image into the workspace.",
+  "extensionKind": [
+    "workspace"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:latex",
+    "onLanguage:latex-expl3",
+    "onLanguage:rsweave",
+    "onLanguage:doctex"
+  ],
+  "contributes": {
+    "configuration": {
+      "title": "LaTeX Paste Figure",
+      "properties": {
+        "pasteFigure.directory": {
+          "type": "string",
+          "default": "img",
+          "scope": "resource",
+          "markdownDescription": "Folder the pasted image is written to, relative to the workspace root. Created on demand."
+        },
+        "pasteFigure.template": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "scope": "resource",
+          "default": [
+            "\\begin{figure}",
+            "\t\\centering",
+            "\t\\includegraphics[width=${1:0.8\\linewidth}]{$IMAGE}",
+            "\t\\caption{${2:Enter Caption}}",
+            "\t\\label{fig:${3:enter-label}}",
+            "\\end{figure}"
+          ],
+          "markdownDescription": "Lines inserted at the cursor, in [snippet syntax](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_snippet-syntax). `$IMAGE` is replaced by the path of the saved image; `${1:...}` are the tab stops you cycle through with `Tab`."
+        }
+      }
+    }
+  }
+}

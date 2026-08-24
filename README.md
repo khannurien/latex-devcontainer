@@ -13,6 +13,49 @@ Full TeX Live 2026 (`scheme-full`) with LaTeX Workshop, `latexmk`, `biber`,
 
 Auxiliary files land in `build/`; the final PDF is written next to the source.
 
+## Included extensions
+
+Besides LaTeX Workshop, two small extensions live in `.devcontainer/` and are
+packaged and installed into the container by `install-extensions.sh` on first
+start. Edit their directories to change what they do.
+
+### `overleaf-keymap`
+
+Rebinds VS Code's keyboard shortcuts to Overleaf's:
+
+| Shortcut       | Action                        |
+| -------------- | ----------------------------- |
+| `Ctrl+B`       | `\textbf{...}` (LaTeX files)   |
+| `Ctrl+I`       | `\textit{...}` (LaTeX files)   |
+| `Ctrl+Enter`   | Build                         |
+| `Ctrl+D`       | Delete line                   |
+| `Ctrl+Shift+D` | Duplicate selection           |
+| `Ctrl+U`       | Uppercase selection           |
+| `Ctrl+Shift+U` | Lowercase selection           |
+| `Ctrl+Shift+L` | Go to line                    |
+| `Ctrl+G`       | Find next                     |
+| `Ctrl+Shift+G` | Find previous                 |
+| `F2`           | Toggle fold                   |
+| `Alt+Shift+0`  | Unfold all                    |
+| `Alt+Shift+1`  | Fold all                      |
+| `Alt+Left`     | Start of line                 |
+| `Alt+Right`    | End of line                   |
+| `Alt+Space`    | Autocomplete                  |
+
+macOS uses `Cmd` where Overleaf does. Shortcuts that only make sense in a `.tex`
+file are scoped to LaTeX files, so `Ctrl+B` still toggles the sidebar elsewhere.
+
+### `paste-figure`
+
+`Ctrl+V` an image into a `.tex` file: the image is written to `img/` and the
+paste is replaced by a `figure` environment with the caption and label as tab
+stops. Two settings, both changeable in `devcontainer.json`:
+
+| Setting                | Default             | Purpose                                   |
+| ---------------------- | ------------------- | ----------------------------------------- |
+| `pasteFigure.directory`| `img`               | Where the image is saved, relative to root |
+| `pasteFigure.template` | `figure` snippet    | Lines inserted at the cursor              |
+
 ## Building the image locally
 
 `devcontainer.json` pulls a prebuilt image from GHCR. To build it yourself,
